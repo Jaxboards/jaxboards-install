@@ -21,6 +21,12 @@ const options = yargs
   .scriptName("jaxboards-install")
   .usage("$0 [args]")
   .command("$0", "Install JaxBoards databae and print configuration.")
+  .option("configOnly", {
+    description:
+      "Only generate config- do not connect to or install the database",
+    type: "boolean",
+    default: true // will change when database install is implemented
+  })
   .option("boardname", {
     description: "The board name",
     default: "Jaxboards"
@@ -84,5 +90,9 @@ const config: Config = {
   service: false,
   prefix: ""
 };
+
+if (!options.configOnly) {
+  process.stderr.write(`Database install not implemented.\n`);
+}
 
 process.stdout.write(`${JSON.stringify(config, null, 2)}\n`);
