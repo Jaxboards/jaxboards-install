@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["ES2019", "DOM", "ScriptHost"],
+    "strict": true,
+    "jsx": "react",
+    "noImplicitAny": true,
+    "target": "esnext",
+    "allowJs": true
+  },
+  "include": ["src/**/*", "tests/**/*"]
+}
