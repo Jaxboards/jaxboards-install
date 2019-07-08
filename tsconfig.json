@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
+    "rootDir": "./src",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ES2019", "DOM", "ScriptHost"],
@@ -8,7 +9,9 @@
     "jsx": "react",
     "noImplicitAny": true,
     "target": "esnext",
-    "allowJs": true
+    "allowJs": true,
+    "outDir": "./dist"
   },
-  "include": ["src/**/*", "tests/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/models/**/*"]
 }
