@@ -16,7 +16,7 @@ export interface Option {
  * What the end result config should look like type-wise
  */
 export interface Config {
-  [key: string]: string | number | boolean | undefined;
+  [key: string]: string | number | boolean | undefined | unknown;
   boardname: string;
   domain: string;
   mail_from: string;

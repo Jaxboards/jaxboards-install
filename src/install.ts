@@ -73,6 +73,8 @@ const main = async (): Promise<void> => {
         questionObject.type = "number";
       }
       questionsToAsk.push(questionObject);
+    } else {
+      config[option.name] = input[option.name];
     }
   });
 
