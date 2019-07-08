@@ -33,40 +33,24 @@ export const getModels = function(seq: sequelize.Sequelize): ITables {
   const tables: ITables = {
     banlist: seq.import(path.join(__dirname, "./banlist")),
     directory: seq.import(path.join(__dirname, "./directory")),
-    activity: seq.import(
-      path.join(__dirname, "./activity")
-    ),
+    activity: seq.import(path.join(__dirname, "./activity")),
     files: seq.import(path.join(__dirname, "./files")),
     forums: seq.import(path.join(__dirname, "./forums")),
-    categories: seq.import(
-      path.join(__dirname, "./categories")
-    ),
-    chatrooms: seq.import(
-      path.join(__dirname, "./chatrooms")
-    ),
-    member_groups: seq.import(
-      path.join(__dirname, "./member_groups")
-    ),
-    messages: seq.import(
-      path.join(__dirname, "./messages")
-    ),
+    categories: seq.import(path.join(__dirname, "./categories")),
+    chatrooms: seq.import(path.join(__dirname, "./chatrooms")),
+    member_groups: seq.import(path.join(__dirname, "./member_groups")),
+    messages: seq.import(path.join(__dirname, "./messages")),
     logs: seq.import(path.join(__dirname, "./logs")),
     posts: seq.import(path.join(__dirname, "./posts")),
     members: seq.import(path.join(__dirname, "./members")),
     pages: seq.import(path.join(__dirname, "./pages")),
     reports: seq.import(path.join(__dirname, "./reports")),
     shouts: seq.import(path.join(__dirname, "./shouts")),
-    ratingniblets: seq.import(
-      path.join(__dirname, "./ratingniblets")
-    ),
-    profile_comments: seq.import(
-      path.join(__dirname, "./profile_comments")
-    ),
+    ratingniblets: seq.import(path.join(__dirname, "./ratingniblets")),
+    profile_comments: seq.import(path.join(__dirname, "./profile_comments")),
     skins: seq.import(path.join(__dirname, "./skins")),
     stats: seq.import(path.join(__dirname, "./stats")),
-    textrules: seq.import(
-      path.join(__dirname, "./textrules")
-    ),
+    textrules: seq.import(path.join(__dirname, "./textrules")),
     session: seq.import(path.join(__dirname, "./session")),
     topics: seq.import(path.join(__dirname, "./topics")),
     tokens: seq.import(path.join(__dirname, "./tokens"))

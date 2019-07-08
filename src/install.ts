@@ -1,32 +1,9 @@
 import yargs from "yargs";
 import process from "process";
 import inquirer from "inquirer";
-import { Config, Answers, Option, options } from "./options";
+import { Answers, Option, config, options } from "./options";
 
 const main = async (): Promise<void> => {
-  // Set the configuration
-  const config: Config = {
-    boardname: "Jaxboards",
-    domain: "example.com",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    mail_from: "Example <example@example.com>",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_host: "localhost",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_port: 3306,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_db: "jaxboards",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_username: "jaxboards",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_password: "jaxboards",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    sql_prefix: "",
-    installed: true,
-    service: false,
-    prefix: ""
-  };
-
   // This is where the command line arguments are set
   const optionsGenerator = yargs
     .scriptName("jaxboards-install")
@@ -51,9 +28,21 @@ const main = async (): Promise<void> => {
     description: "Provide a path to an existing configuration file."
   });
 
-  const input = optionsGenerator.argv;
+  const input: { [key: string]: unknown } = optionsGenerator.argv;
+  // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
+  const inputs: Answers = {} as Answers;
+  Object.keys(input).forEach((item): void => {
+    if (
+      typeof input[item] === "string" ||
+      typeof input[item] === "number" ||
+      typeof input[item] === "boolean"
+    ) {
+      // @ts-ignore: 2322
+      inputs[item] = input[item];
+    }
+  });
 
-  if (!input.configOnly) {
+  if (!inputs.configOnly) {
     // Database install not ready yet!
     process.stderr.write(`Database install not implemented.\n`);
   }
@@ -62,7 +51,7 @@ const main = async (): Promise<void> => {
   const questionsToAsk: object[] = [];
 
   options.forEach((option: Option): void => {
-    if (!input[option.name]) {
+    if (!inputs[option.name]) {
       const questionObject = {
         type: "input",
         name: option.name,
@@ -73,8 +62,12 @@ const main = async (): Promise<void> => {
         questionObject.type = "number";
       }
       questionsToAsk.push(questionObject);
-    } else {
-      config[option.name] = input[option.name];
+    } else if (
+      typeof option.name === "string" ||
+      typeof option.name === "number" ||
+      typeof option.name === "boolean"
+    ) {
+      config[option.name] = inputs[option.name];
     }
   });
 

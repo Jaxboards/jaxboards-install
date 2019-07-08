@@ -16,20 +16,24 @@ export interface Option {
  * What the end result config should look like type-wise
  */
 export interface Config {
-  [key: string]: string | number | boolean | undefined | unknown;
+  [key: string]: string | number | boolean | undefined;
   boardname: string;
   domain: string;
   mail_from: string;
   sql_host: string;
   sql_port?: number;
+  sql_driver?: string;
   sql_db: string;
   sql_username: string;
   sql_password: string;
-  sql_driver?: string;
+  sql_prefix: string;
   installed: boolean;
   service: boolean;
   prefix: string;
-  sql_prefix: string;
+}
+
+interface ConfigBuilder {
+  [key: string]: string | number | boolean | undefined;
 }
 
 /**
@@ -38,16 +42,17 @@ export interface Config {
  * The results of the inquirer answers
  */
 export interface Answers {
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | boolean | undefined;
+  configOnly?: string;
   boardname?: string;
   domain?: string;
   mail_from?: string;
   sql_host?: string;
   sql_port?: number;
+  sql_driver?: string;
   sql_db?: string;
   sql_username?: string;
   sql_password?: string;
-  sql_driver?: string;
   sql_prefix?: string;
 }
 
@@ -119,3 +124,17 @@ export const options: Option[] = [
     default: ""
   }
 ];
+
+// build default config
+// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
+const temp: Config = {} as Config;
+options.forEach(
+  (option): void => {
+    temp[option.name] = option.default;
+  }
+);
+temp.installed = true;
+temp.service = false;
+temp.prefix = "";
+
+export const config: Config = temp;

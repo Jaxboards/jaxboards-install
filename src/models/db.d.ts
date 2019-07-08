@@ -42,10 +42,7 @@ export interface activityInstance
   extends Sequelize.Instance<activityAttribute>,
     activityAttribute {}
 export interface activityModel
-  extends Sequelize.Model<
-    activityInstance,
-    activityAttribute
-  > {}
+  extends Sequelize.Model<activityInstance, activityAttribute> {}
 
 // table: files
 export interface filesAttribute {
@@ -91,10 +88,7 @@ export interface forumsInstance
   extends Sequelize.Instance<forumsAttribute>,
     forumsAttribute {}
 export interface forumsModel
-  extends Sequelize.Model<
-    forumsInstance,
-    forumsAttribute
-  > {}
+  extends Sequelize.Model<forumsInstance, forumsAttribute> {}
 
 // table: categories
 export interface categoriesAttribute {
@@ -106,10 +100,7 @@ export interface categoriesInstance
   extends Sequelize.Instance<categoriesAttribute>,
     categoriesAttribute {}
 export interface categoriesModel
-  extends Sequelize.Model<
-    categoriesInstance,
-    categoriesAttribute
-  > {}
+  extends Sequelize.Model<categoriesInstance, categoriesAttribute> {}
 
 // table: chatrooms
 export interface chatroomsAttribute {
@@ -120,10 +111,7 @@ export interface chatroomsInstance
   extends Sequelize.Instance<chatroomsAttribute>,
     chatroomsAttribute {}
 export interface chatroomsModel
-  extends Sequelize.Model<
-    chatroomsInstance,
-    chatroomsAttribute
-  > {}
+  extends Sequelize.Model<chatroomsInstance, chatroomsAttribute> {}
 
 // table: member_groups
 export interface member_groupsAttribute {
@@ -163,10 +151,7 @@ export interface member_groupsInstance
   extends Sequelize.Instance<member_groupsAttribute>,
     member_groupsAttribute {}
 export interface member_groupsModel
-  extends Sequelize.Model<
-    member_groupsInstance,
-    member_groupsAttribute
-  > {}
+  extends Sequelize.Model<member_groupsInstance, member_groupsAttribute> {}
 
 // table: messages
 export interface messagesAttribute {
@@ -185,10 +170,7 @@ export interface messagesInstance
   extends Sequelize.Instance<messagesAttribute>,
     messagesAttribute {}
 export interface messagesModel
-  extends Sequelize.Model<
-    messagesInstance,
-    messagesAttribute
-  > {}
+  extends Sequelize.Model<messagesInstance, messagesAttribute> {}
 
 // table: logs
 export interface logsAttribute {
@@ -276,10 +258,7 @@ export interface membersInstance
   extends Sequelize.Instance<membersAttribute>,
     membersAttribute {}
 export interface membersModel
-  extends Sequelize.Model<
-    membersInstance,
-    membersAttribute
-  > {}
+  extends Sequelize.Model<membersInstance, membersAttribute> {}
 
 // table: pages
 export interface pagesAttribute {
@@ -304,10 +283,7 @@ export interface reportsInstance
   extends Sequelize.Instance<reportsAttribute>,
     reportsAttribute {}
 export interface reportsModel
-  extends Sequelize.Model<
-    reportsInstance,
-    reportsAttribute
-  > {}
+  extends Sequelize.Model<reportsInstance, reportsAttribute> {}
 
 // table: shouts
 export interface shoutsAttribute {
@@ -321,10 +297,7 @@ export interface shoutsInstance
   extends Sequelize.Instance<shoutsAttribute>,
     shoutsAttribute {}
 export interface shoutsModel
-  extends Sequelize.Model<
-    shoutsInstance,
-    shoutsAttribute
-  > {}
+  extends Sequelize.Model<shoutsInstance, shoutsAttribute> {}
 
 // table: ratingniblets
 export interface ratingnibletsAttribute {
@@ -336,10 +309,7 @@ export interface ratingnibletsInstance
   extends Sequelize.Instance<ratingnibletsAttribute>,
     ratingnibletsAttribute {}
 export interface ratingnibletsModel
-  extends Sequelize.Model<
-    ratingnibletsInstance,
-    ratingnibletsAttribute
-  > {}
+  extends Sequelize.Model<ratingnibletsInstance, ratingnibletsAttribute> {}
 
 // table: profile_comments
 export interface profile_commentsAttribute {
@@ -401,10 +371,7 @@ export interface textrulesInstance
   extends Sequelize.Instance<textrulesAttribute>,
     textrulesAttribute {}
 export interface textrulesModel
-  extends Sequelize.Model<
-    textrulesInstance,
-    textrulesAttribute
-  > {}
+  extends Sequelize.Model<textrulesInstance, textrulesAttribute> {}
 
 // table: session
 export interface sessionAttribute {
@@ -430,10 +397,7 @@ export interface sessionInstance
   extends Sequelize.Instance<sessionAttribute>,
     sessionAttribute {}
 export interface sessionModel
-  extends Sequelize.Model<
-    sessionInstance,
-    sessionAttribute
-  > {}
+  extends Sequelize.Model<sessionInstance, sessionAttribute> {}
 
 // table: topics
 export interface topicsAttribute {
@@ -461,7 +425,4 @@ export interface topicsInstance
   extends Sequelize.Instance<topicsAttribute>,
     topicsAttribute {}
 export interface topicsModel
-  extends Sequelize.Model<
-    topicsInstance,
-    topicsAttribute
-  > {}
+  extends Sequelize.Model<topicsInstance, topicsAttribute> {}

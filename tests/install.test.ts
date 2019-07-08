@@ -10,20 +10,22 @@ interface CommandResult {
 }
 
 function runCommand(args: string[], cwd: string): Promise<CommandResult> {
-  return new Promise((resolve): void => {
-    exec(
-      `ts-node ${path.resolve("./src/install.ts")} ${args.join(" ")}`,
-      { cwd },
-      (error: ExecException | null, stdout: string, stderr: string): void => {
-        resolve({
-          code: error && error.code ? error.code : 0,
-          error,
-          stdout,
-          stderr
-        });
-      }
-    );
-  });
+  return new Promise(
+    (resolve): void => {
+      exec(
+        `ts-node ${path.resolve("./src/install.ts")} ${args.join(" ")}`,
+        { cwd },
+        (error: ExecException | null, stdout: string, stderr: string): void => {
+          resolve({
+            code: error && error.code ? error.code : 0,
+            error,
+            stdout,
+            stderr
+          });
+        }
+      );
+    }
+  );
 }
 
 test("Help prints and returns 0", async (): Promise<void> => {
