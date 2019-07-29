@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { forumsInstance, forumsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<forumsInstance, forumsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<forumsInstance, forumsAttribute> => {
+  return (sequelize.define(
     "forums",
     {
       id: {
@@ -17,6 +18,7 @@ module.exports = function(
         primaryKey: true,
         autoIncrement: true
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       cat_id: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -34,6 +36,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_uid: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -42,11 +45,13 @@ module.exports = function(
           key: "id"
         }
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_date: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_tid: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -55,6 +60,7 @@ module.exports = function(
           key: "id"
         }
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_topic: {
         type: DataTypes.STRING(255),
         allowNull: false,
@@ -65,6 +71,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       show_sub: {
         type: DataTypes.INTEGER(3).UNSIGNED,
         allowNull: false,
@@ -120,6 +127,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       show_ledby: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
@@ -129,5 +137,5 @@ module.exports = function(
     {
       tableName: "forums"
     }
-  );
+  ) as unknown) as Model<forumsInstance, forumsAttribute>;
 };

@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { chatroomsInstance, chatroomsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<chatroomsInstance, chatroomsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<chatroomsInstance, chatroomsAttribute> => {
+  return (sequelize.define(
     "chatrooms",
     {
       id: {
@@ -24,5 +25,5 @@ module.exports = function(
     {
       tableName: "chatrooms"
     }
-  );
+  ) as unknown) as Model<chatroomsInstance, chatroomsAttribute>;
 };

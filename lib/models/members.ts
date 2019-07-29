@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { membersInstance, membersAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<membersInstance, membersAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<membersInstance, membersAttribute> => {
+  return (sequelize.define(
     "members",
     {
       id: {
@@ -41,6 +42,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       group_id: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -59,36 +61,43 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       join_date: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       last_visit: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_skype: {
         type: DataTypes.STRING(50),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_yim: {
         type: DataTypes.STRING(50),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_msn: {
         type: DataTypes.STRING(50),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_gtalk: {
         type: DataTypes.STRING(50),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_aim: {
         type: DataTypes.STRING(50),
         allowNull: false,
@@ -109,16 +118,19 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       display_name: {
         type: DataTypes.STRING(30),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       full_name: {
         type: DataTypes.STRING(50),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_steam: {
         type: DataTypes.STRING(50),
         allowNull: false,
@@ -143,41 +155,49 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       sound_shout: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "1"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       sound_im: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "1"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       sound_pm: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       sound_postinmytopic: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       sound_postinsubscribedtopic: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       notify_pm: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       notify_postinmytopic: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       notify_postinsubscribedtopic: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
@@ -188,15 +208,18 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       skin_id: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       contact_twitter: {
         type: DataTypes.STRING(255),
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       email_settings: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
@@ -226,5 +249,5 @@ module.exports = function(
     {
       tableName: "members"
     }
-  );
+  ) as unknown) as Model<membersInstance, membersAttribute>;
 };

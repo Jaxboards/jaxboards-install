@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { postsInstance, postsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<postsInstance, postsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<postsInstance, postsAttribute> => {
+  return (sequelize.define(
     "posts",
     {
       id: {
@@ -17,6 +18,7 @@ module.exports = function(
         primaryKey: true,
         autoIncrement: true
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       auth_id: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -62,6 +64,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       edit_date: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -80,5 +83,5 @@ module.exports = function(
     {
       tableName: "posts"
     }
-  );
+  ) as unknown) as Model<postsInstance, postsAttribute>;
 };

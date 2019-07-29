@@ -3,21 +3,17 @@
   "version": "0.0.0",
   "description": "Installer for Jaxboards on Node",
   "author": "Chad Wade Day, Jr. <cdayjr@chadwadedayjr.info>",
-  "license": "Blue Oak Model License 1.0.0",
+  "license": "BlueOak-1.0.0",
   "main": "lib/install.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "ts-node src/install.ts",
-    "build": "npm run clean && npm run build-dist",
-    "build-dist": "tsc --build tsconfig.json && prettier --write \"./dist/**/*.js\"",
-    "clean": "rm -rf ./dist",
-    "lint": "tsc --noEmit --project tsconfig.json && lint-staged",
+    "start": "node lib/install.js",
+    "lint": "lint-staged",
     "pre-commit": "npm run lint",
     "test": "jest",
     "test-coverage": "jest --coverage",
-    "ts-check": "tsc --noEmit --project tsconfig.json",
     "prepublishOnly": "npm run build"
   },
   "husky": {
@@ -30,13 +26,15 @@
       "prettier --write",
       "git add"
     ],
-    "./{src,demo,tests}/**/*.ts": [
+    "./{src,demo,tests}/**/*.js": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ]
   },
   "dependencies": {
     "inquirer": "^6.4.1",
+    "mysql2": "^1.6.5",
     "sequelize": "^5.9.2",
     "yargs": "^13.2.4"
   },
@@ -45,22 +43,11 @@
     "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "@babel/runtime": "^7.5.1",
-    "@types/inquirer": "^6.0.3",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.0.12",
-    "@types/rx": "^4.1.1",
-    "@types/sequelize": "^4.28.3",
-    "@types/through": "^0.0.29",
-    "@types/yargs": "^13.0.0",
-    "@types/yargs-parser": "^13.0.0",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
-    "@typescript-eslint/parser": "^1.11.0",
     "babel-jest": "^24.8.0",
     "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-import-resolver-node": "^0.3.2",
-    "eslint-import-resolver-typescript": "^1.1.1",
     "eslint-plugin-compat": "^3.2.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jest": "^22.7.2",
@@ -69,10 +56,7 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.1.0",
     "prettier": "^1.18.2",
-    "rx": "^4.1.0",
-    "through": "^2.3.8",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.2",
+    "rxjs": "^6.5.2",
     "yargs-parser": "^13.1.1"
   },
   "browserslist": [

@@ -426,3 +426,16 @@ export interface topicsInstance
     topicsAttribute {}
 export interface topicsModel
   extends Sequelize.Model<topicsInstance, topicsAttribute> {}
+
+// table: tokens
+export interface tokensAttribute {
+  token: string;
+  type: "login" | "forgotpassword";
+  uid?: number;
+  expires: Date;
+}
+export interface tokensInstance
+  extends Sequelize.Instance<tokensAttribute>,
+    tokensAttribute {}
+export interface tokensModel
+  extends Sequelize.Model<tokensInstance, tokensAttribute> {}

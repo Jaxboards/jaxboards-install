@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { topicsInstance, topicsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<topicsInstance, topicsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<topicsInstance, topicsAttribute> => {
+  return (sequelize.define(
     "topics",
     {
       id: {
@@ -26,6 +27,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: ""
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_uid: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -34,6 +36,7 @@ module.exports = function(
           key: "id"
         }
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       lp_date: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -47,6 +50,7 @@ module.exports = function(
           key: "id"
         }
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       auth_id: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -70,19 +74,23 @@ module.exports = function(
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       poll_choices: {
         type: DataTypes.TEXT,
         allowNull: false
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       poll_results: {
         type: DataTypes.TEXT,
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       poll_q: {
         type: DataTypes.STRING(255),
         allowNull: false
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       poll_type: {
         type: DataTypes.ENUM("", "single", "multi"),
         allowNull: false,
@@ -111,6 +119,7 @@ module.exports = function(
           key: "id"
         }
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       cal_event: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: false,
@@ -120,5 +129,5 @@ module.exports = function(
     {
       tableName: "topics"
     }
-  );
+  ) as unknown) as Model<topicsInstance, topicsAttribute>;
 };

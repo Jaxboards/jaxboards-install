@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { * as sequelizeMain, Sequelize, Model, DataTypes } from "sequelize";
 import { activityInstance, activityAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<activityInstance, activityAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes: sequelizeMain.DataTypes
+): Model<activityInstance, activityAttribute> => {
+  return (sequelize.define(
     "activity",
     {
       id: {
@@ -47,6 +48,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       affected_uid: {
         type: DataTypes.INTEGER(11).UNSIGNED,
         allowNull: true,
@@ -80,5 +82,5 @@ module.exports = function(
     {
       tableName: "activity"
     }
-  );
+  ) as unknown) as Model<activityInstance, activityAttribute>;
 };

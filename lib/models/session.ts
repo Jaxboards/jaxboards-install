@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { sessionInstance, sessionAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<sessionInstance, sessionAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<sessionInstance, sessionAttribute> => {
+  return (sequelize.define(
     "session",
     {
       id: {
@@ -34,11 +35,13 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       last_update: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       last_action: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -54,21 +57,25 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       users_online_cache: {
         type: DataTypes.TEXT,
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       is_bot: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       buddy_list_cache: {
         type: DataTypes.TEXT,
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       location_verbose: {
         type: DataTypes.STRING(100),
         allowNull: false,
@@ -89,6 +96,7 @@ module.exports = function(
         allowNull: false,
         defaultValue: "''"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       read_date: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -103,5 +111,5 @@ module.exports = function(
     {
       tableName: "session"
     }
-  );
+  ) as unknown) as Model<sessionInstance, sessionAttribute>;
 };

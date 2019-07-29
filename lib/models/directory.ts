@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { directoryInstance, directoryAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<directoryInstance, directoryAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<directoryInstance, directoryAttribute> => {
+  return (sequelize.define(
     "directory",
     {
       id: {
@@ -17,10 +18,12 @@ module.exports = function(
         primaryKey: true,
         autoIncrement: true
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       registrar_email: {
         type: DataTypes.STRING(255),
         allowNull: false
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       registrar_ip: {
         type: "VARBINARY(16)",
         allowNull: false,
@@ -43,5 +46,5 @@ module.exports = function(
     {
       tableName: "directory"
     }
-  );
+  ) as unknown) as Model<directoryInstance, directoryAttribute>;
 };

@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { ratingnibletsInstance, ratingnibletsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<ratingnibletsInstance, ratingnibletsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<ratingnibletsInstance, ratingnibletsAttribute> => {
+  return (sequelize.define(
     "ratingniblets",
     {
       id: {
@@ -29,5 +30,5 @@ module.exports = function(
     {
       tableName: "ratingniblets"
     }
-  );
+  ) as unknown) as Model<ratingnibletsInstance, ratingnibletsAttribute>;
 };

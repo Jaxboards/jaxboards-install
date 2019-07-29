@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { textrulesInstance, textrulesAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<textrulesInstance, textrulesAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<textrulesInstance, textrulesAttribute> => {
+  return (sequelize.define(
     "textrules",
     {
       id: {
@@ -38,5 +39,5 @@ module.exports = function(
     {
       tableName: "textrules"
     }
-  );
+  ) as unknown) as Model<textrulesInstance, textrulesAttribute>;
 };

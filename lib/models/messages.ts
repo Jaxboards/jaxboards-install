@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { messagesInstance, messagesAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<messagesInstance, messagesAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<messagesInstance, messagesAttribute> => {
+  return (sequelize.define(
     "messages",
     {
       id: {
@@ -51,11 +52,13 @@ module.exports = function(
         allowNull: false,
         defaultValue: "0000-00-00 00:00:00"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       del_recipient: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
         defaultValue: "0"
       },
+      // eslint-disable-next-line @typescript-eslint/camelcase
       del_sender: {
         type: DataTypes.INTEGER(1).UNSIGNED,
         allowNull: false,
@@ -70,5 +73,5 @@ module.exports = function(
     {
       tableName: "messages"
     }
-  );
+  ) as unknown) as Model<messagesInstance, messagesAttribute>;
 };

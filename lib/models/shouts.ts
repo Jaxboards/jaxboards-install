@@ -1,14 +1,15 @@
 /* jshint indent: 2 */
 // tslint:disable
-import * as sequelize from "sequelize";
-import { DataTypes } from "sequelize";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Sequelize, Model, DataTypes } from "sequelize";
 import { shoutsInstance, shoutsAttribute } from "./db";
 
-module.exports = function(
-  sequelize: sequelize.Sequelize,
-  DataTypes: DataTypes
-) {
-  return sequelize.define<shoutsInstance, shoutsAttribute>(
+module.exports = (
+  sequelize: Sequelize,
+  // eslint-disable-next-line no-shadow
+  DataTypes
+): Model<shoutsInstance, shoutsAttribute> => {
+  return (sequelize.define(
     "shouts",
     {
       id: {
@@ -43,5 +44,5 @@ module.exports = function(
     {
       tableName: "shouts"
     }
-  );
+  ) as unknown) as Model<shoutsInstance, shoutsAttribute>;
 };
