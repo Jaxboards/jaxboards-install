@@ -65,13 +65,7 @@
   "jest": {
     "clearMocks": true,
     "coverageDirectory": "./covergage/",
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "./tsconfig.json"
-      }
-    }
+    "testEnvironment": "node"
   },
   "babel": {
     "presets": [
