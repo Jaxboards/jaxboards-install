@@ -4,7 +4,7 @@ const { exec } = require("child_process");
 function runCommand(args, cwd) {
   return new Promise(resolve => {
     exec(
-      `ts-node ${path.resolve("./src/install.ts")} ${args.join(" ")}`,
+      `node ${path.resolve("./lib/install.js")} ${args.join(" ")}`,
       { cwd },
       (error, stdout, stderr) => {
         resolve({

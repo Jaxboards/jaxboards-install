@@ -26,7 +26,7 @@
       "prettier --write",
       "git add"
     ],
-    "./{src,demo,tests}/**/*.js": [
+    "./{lib,tests}/**/*.js": [
       "eslint --fix",
       "prettier --write",
       "git add"
